@@ -23,6 +23,7 @@ int main()
             cin >> A[i][j];
         }
     }
+    memset(f, -0x3f, sizeof(f));
     f[1][1][0] = A[1][1];
     for (int i = 1; i <= N; ++i)
     {
