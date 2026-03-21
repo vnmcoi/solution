@@ -2,11 +2,12 @@
 using namespace std;
 
 const int mxN = 400 + 5;
+const int mxK = 400 + 5;
 const int INF = 0x3f3f3f3f;
 
 int N, K;
 int D[mxN];
-int f[mxN][mxN];
+int f[mxN][mxK];
 
 int main()
 {

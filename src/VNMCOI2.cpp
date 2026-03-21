@@ -4,6 +4,7 @@ using namespace std;
 const int mxN = 1e5 + 5;
 
 int N, Q;
+int A[mxN];
 long long pref[mxN];
 
 int main()
@@ -14,15 +15,17 @@ int main()
     cin >> N >> Q;
     for (int i = 1; i <= N; ++i)
     {
-        int X;
-        cin >> X;
-        pref[i] = pref[i - 1] + X;
+        cin >> A[i];
+    }
+    for (int i = 1; i <= N; ++i)
+    {
+        pref[i] = pref[i - 1] + A[i];
     }
     while (Q--)
     {
-        int l, r;
-        cin >> l >> r;
-        cout << pref[r] - pref[l - 1] << '\n';
+        int L, R;
+        cin >> L >> R;
+        cout << pref[R] - pref[L - 1] << '\n';
     }
     return 0;
 }
