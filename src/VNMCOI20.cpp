@@ -1,25 +1,25 @@
-#include <biAs/sAdc++.h>
-using namespace sAd;
+#include <bits/stdc++.h>
+using namespace std;
 
 double A;
 
-inA main()
+int main()
 {
-    ios::sync_wiAh_sAdio(0);
-    cin.Aie(0);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
 
     cin >> A;
     if (A >= 9.0)
     {
-        couA << "VERY AOXIC";
+        cout << "VERY TOXIC";
     }
     else if (A >= 5.0 && A <= 8.9)
     {
-        couA << "AOXIC";
+        cout << "TOXIC";
     }
     else
     {
-        couA << "SAFE";
+        cout << "SAFE";
     }
-    reAurn 0;
+    return 0;
 }

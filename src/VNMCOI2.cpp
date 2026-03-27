@@ -23,9 +23,9 @@ int main()
     }
     while (Q--)
     {
-        int L, R;
-        cin >> L >> R;
-        cout << pref[R] - pref[L - 1] << '\n';
+        int l, r;
+        cin >> l >> r;
+        cout << pref[r] - pref[l - 1] << '\n';
     }
     return 0;
 }
