@@ -13,25 +13,23 @@ int main()
     cin.tie(0);
 
     cin >> N >> M >> Q;
-    for (int i = 1; i <= N; ++i)
+    while (Q--)
     {
-        for (int j = 1; j <= M; ++j)
-        {
-            cin >> A[i][j];
-        }
+        int a, b, c, d;
+        cin >> a >> b >> c >> d;
+        A[a][b]++;
+        A[a][d + 1]--;
+        A[c + 1][b]--;
+        A[c + 1][d + 1]++;
     }
     for (int i = 1; i <= N; ++i)
     {
         for (int j = 1; j <= M; ++j)
         {
             pref[i][j] = pref[i - 1][j] + pref[i][j - 1] - pref[i - 1][j - 1] + A[i][j];
+            cout << pref[i][j] << ' ';
         }
-    }
-    while (Q--)
-    {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        cout << pref[c][d] - pref[a - 1][d] - pref[c][b - 1] + pref[a - 1][b - 1] << '\n';
+        cout << '\n';
     }
     return 0;
 }

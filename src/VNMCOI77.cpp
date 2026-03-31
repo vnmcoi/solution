@@ -4,6 +4,7 @@ using namespace std;
 const int mxN = 1e5 + 5;
 
 int N;
+int A[mxN];
 long long pref[mxN];
 
 int main()
@@ -16,9 +17,11 @@ int main()
     long long mn = 0;
     for (int i = 1; i <= N; ++i)
     {
-        int x;
-        cin >> x;
-        pref[i] = pref[i - 1] + x;
+        cin >> A[i];
+    }
+    for (int i = 1; i <= N; ++i)
+    {
+        pref[i] = pref[i - 1] + A[i];
         ans = max(ans, pref[i] - mn);
         mn = min(mn, pref[i]);
     }
