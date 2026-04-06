@@ -46,7 +46,6 @@ int main()
         int x;
         cin >> x;
         x = dsu.find(x);
-        cerr << abs(x - l) << ' ' << abs(r - x) << '\n';
         if (abs(x - l) <= abs(r - x))
         {
             for (int j = l; j < x; ++j)
