@@ -19,22 +19,21 @@ int main()
 
     freopen("LATGACH.INP", "r", stdin);
     freopen("LATGACH.OUT", "w", stdout);
-
     cin >> N >> M >> T;
-    long long lo = 0;
-    long long hi = min(N, M) / 2 + 1;
-    while (hi - lo > 1)
+    long long l = 0;
+    long long r = min(N, M) / 2 + 1;
+    while (r - l > 1)
     {
-        long long mid = (lo + hi) >> 1;
+        long long mid = (l + r) >> 1;
         if (check(mid) == true)
         {
-            lo = mid;
+            l = mid;
         }
         else
         {
-            hi = mid;
+            r = mid;
         }
     }
-    cout << lo;
+    cout << l;
     return 0;
 }

@@ -13,7 +13,6 @@ int main()
 
     freopen("BOIBA.INP", "r", stdin);
     freopen("BOIBA.OUT", "w", stdout);
-
     cin >> N;
     for (int i = 1; i <= N; ++i)
     {
