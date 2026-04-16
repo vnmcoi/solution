@@ -2,21 +2,13 @@
 using namespace std;
 
 const int mxN = 400 + 5;
-const int mxK = 400 + 5;
-const int INF = 0x3f3f3f3f;
 
 int N, K;
 int D[mxN];
-int f[mxN][mxK];
+int f[mxN][mxN];
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("BANTAU.INP", "r", stdin);
-    freopen("BANTAU.OUT", "w", stdout);
-
     cin >> N >> K;
     for (int i = 1; i <= N; ++i)
     {
@@ -40,5 +32,16 @@ int main()
         }
     }
     cout << f[N][K + 1];
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("BANTAU.INP", "r", stdin);
+    freopen("BANTAU.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

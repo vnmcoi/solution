@@ -1,69 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define FOR(i, a, b) for (int i = (a), _b = (b); i <= _b; i++)
-#define FORD(i, b, a) for (int i = (b), _a = (a); i >= _a; i--)
-#define REP(i, n) for (int i = 0, _n = (n); i < _n; i++)
+const int mxN = 5e5 + 5;
 
-#define fi first
-#define se second
+int N;
+pair<int, int> A[mxN];
 
-#define MAX 220797
-int a[MAX], n;
-
-void process(void)
+struct compare
 {
-    scanf("%d", &n);
-    FOR(i, 1, n)
-    scanf("%d", &a[i]);
-
-    set<int> pos;
-    priority_queue<pair<int, int>> maxVal;
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minVal;
-
-    FOR(i, 1, n)
+    bool operator()(const pair<int, int> &a, const pair<int, int> &b)
     {
-        pos.insert(i);
-        maxVal.push(make_pair(a[i], i));
-        minVal.push(make_pair(a[i], i));
+        return a.second < b.second;
     }
+};
 
-    int res = 0;
-
-    while (true)
+void solve()
+{
+    cin >> N;
+    for (int i = 1; i <= N; ++i)
     {
-        while (!maxVal.empty() && pos.find(maxVal.top().se) == pos.end())
-            maxVal.pop();
-        while (!minVal.empty() && pos.find(minVal.top().se) == pos.end())
-            minVal.pop();
-        if (minVal.empty() || maxVal.empty())
-            break;
-
-        res++;
-        int L = maxVal.top().se;
-        int R = minVal.top().se;
-        if (L > R)
-            swap(L, R);
-
-        while (!pos.empty())
+        cin >> A[i].first >> A[i].second;
+    }
+    sort(A + 1, A + 1 + N, compare());
+    int ans = 0;
+    int res = 0;
+    for (int i = 1; i <= N; ++i)
+    {
+        if (A[i].first > res)
         {
-            __typeof(pos.begin()) it = pos.lower_bound(L);
-            if (it == pos.end() || *it > R)
-                break;
-            pos.erase(it);
+            ++ans;
+            res = A[i].second;
         }
     }
-
-    cout << res << "\n";
+    cout << ans;
 }
 
-int main(void)
+int main()
 {
-#ifdef ONLINE_JUDGE
-    freopen("lab.inp", "r", stdin);
-    freopen("lab.out", "w", stdout);
-#endif // ONLINE_JUDGE
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    process();
+    solve();
     return 0;
 }

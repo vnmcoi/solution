@@ -9,14 +9,8 @@ int b[mxN];
 int va[mxN];
 int hb[mxN];
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("RUTVAN.INP", "r", stdin);
-    freopen("RUTVAN.OUT", "w", stdout);
-
     cin >> A >> B >> N >> M;
     for (int i = 1; i <= N; ++i)
     {
@@ -60,5 +54,16 @@ int main()
         }
     }
     cout << ans;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("RUTVAN.INP", "r", stdin);
+    freopen("RUTVAN.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

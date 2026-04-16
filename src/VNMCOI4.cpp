@@ -1,35 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int mxN = 1e5 + 5;
+const int mxN = 5e5 + 5;
 
-struct Querry
+int N, Q;
+
+struct querry
 {
     int l, r, k, id;
     struct compare
     {
-        bool operator()(const Querry &a, const Querry &b)
+        bool operator()(const querry &a, const querry &b)
         {
             return a.k > b.k;
         }
     };
 };
 
-struct Value
+struct value
 {
     int val, pos;
     struct compare
     {
-        bool operator()(const Value &a, const Value &b)
+        bool operator()(const value &a, const value &b)
         {
             return a.val > b.val;
         }
     };
 };
 
-int N, Q;
-Value a[mxN];
-Querry q[mxN];
+value A[mxN];
+querry Querry[mxN];
 int ans[mxN];
 
 struct SegmentTree
@@ -81,38 +82,43 @@ struct SegmentTree
     }
 };
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
     cin >> N >> Q;
     for (int i = 1; i <= N; ++i)
     {
-        cin >> a[i].val;
-        a[i].pos = i;
+        cin >> A[i].val;
+        A[i].pos = i;
     }
     for (int i = 1; i <= Q; ++i)
     {
-        cin >> q[i].l >> q[i].r >> q[i].k;
-        q[i].id = i;
+        cin >> Querry[i].l >> Querry[i].r >> Querry[i].k;
+        Querry[i].id = i;
     }
-    sort(a + 1, a + 1 + N, Value::compare());
-    sort(q + 1, q + 1 + Q, Querry::compare());
+    sort(A + 1, A + 1 + N, value::compare());
+    sort(Querry + 1, Querry + 1 + Q, querry::compare());
     int j = 1;
     SegmentTree it(N);
     for (int i = 1; i <= Q; ++i)
     {
-        while (a[j].val > q[i].k)
+        while (A[j].val > Querry[i].k)
         {
-            it.update(1, 1, N, a[j].pos, 1);
+            it.update(1, 1, N, A[j].pos, 1);
             ++j;
         }
-        ans[q[i].id] = it.querry(1, 1, N, 1, q[i].r) - it.querry(1, 1, N, 1, q[i].l - 1);
+        ans[Querry[i].id] = it.querry(1, 1, N, Querry[i].l, Querry[i].r);
     }
     for (int i = 1; i <= Q; ++i)
     {
         cout << ans[i] << '\n';
     }
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    solve();
     return 0;
 }

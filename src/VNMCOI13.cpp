@@ -5,26 +5,22 @@ const int mxN = 5e4 + 5;
 
 int N;
 
-struct Rectangle
+struct rectangle
 {
     int X1, Y1, X2, Y2;
     int A;
 };
 
-struct Event
+struct event
 {
     int x, type, id;
-    bool operator<(const Event &other) const
+    struct compare
     {
-        if (x != other.x)
+        bool operator()(const event &a, const event &b)
         {
-            return x < other.x;
+            return (a.x != b.x ? a.x < b.x : a.type > b.type);
         }
-        else
-        {
-            return type > other.type;
-        }
-    }
+    };
 };
 
 struct DisjointSetUnion
@@ -39,15 +35,15 @@ struct DisjointSetUnion
         sz.assign(n + 1, 1);
     }
 
-    int find(int u)
+    int root(int u)
     {
-        return (par[u] == -1 ? u : par[u] = find(par[u]));
+        return (par[u] == -1 ? u : par[u] = root(par[u]));
     }
 
     bool merge(int u, int v)
     {
-        u = find(u);
-        v = find(v);
+        u = root(u);
+        v = root(v);
         if (u == v)
         {
             return false;
@@ -62,23 +58,17 @@ struct DisjointSetUnion
     }
 };
 
-Rectangle R[mxN];
-vector<Event> E;
+rectangle R[mxN];
+vector<event> E;
 long long sum[mxN];
 
-bool check(const Rectangle &A, const Rectangle &B)
+bool check(const rectangle &A, const rectangle &B)
 {
     return max(A.Y1, B.Y1) <= min(A.Y2, B.Y2);
 }
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("LATGACH.INP", "r", stdin);
-    freopen("LATGACH.OUT", "w", stdout);
-
     cin >> N;
     for (int i = 1; i <= N; ++i)
     {
@@ -88,10 +78,10 @@ int main()
         E.push_back({X, 1, i});
         E.push_back({X + D, -1, i});
     }
-    sort(E.begin(), E.end());
+    sort(E.begin(), E.end(), event::compare());
     DisjointSetUnion dsu(N);
     set<pair<int, int>> st;
-    for (vector<Event>::iterator itr = E.begin(); itr != E.end(); ++itr)
+    for (vector<event>::iterator itr = E.begin(); itr != E.end(); ++itr)
     {
         int i = itr->id;
         if (itr->type == 1)
@@ -120,10 +110,21 @@ int main()
     long long ans = 0;
     for (int i = 1; i <= N; ++i)
     {
-        int x = dsu.find(i);
+        int x = dsu.root(i);
         sum[x] += R[i].A;
         ans = max(ans, sum[x]);
     }
     cout << ans;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("LATGACH.INP", "r", stdin);
+    freopen("LATGACH.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

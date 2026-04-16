@@ -4,34 +4,39 @@ using namespace std;
 int N;
 stack<int> st;
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("XEPGACH.INP", "r", stdin);
-    freopen("XEPGACH.OUT", "w", stdout);
-
     cin >> N;
     int ans = 0;
     for (int i = 1; i <= N; ++i)
     {
-        int x;
-        cin >> x;
-        while (st.empty() == false && st.top() > x)
+        int a;
+        cin >> a;
+        while (st.empty() == false && st.top() > a)
         {
             st.pop();
         }
-        if (st.empty() == false && st.top() == x)
+        if (st.empty() == false && st.top() == a)
         {
             continue;
         }
-        if (x != 0)
+        if (a != 0)
         {
             ++ans;
-            st.push(x);
+            st.push(a);
         }
     }
     cout << ans;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("XEPGACH.INP", "r", stdin);
+    freopen("XEPGACH.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

@@ -3,14 +3,19 @@ using namespace std;
 
 string S;
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
     getline(cin, S);
     cout << S << '\n';
     cout << S << '\n';
     cout << S;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    solve();
     return 0;
 }

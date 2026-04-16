@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(void)
+void solve()
 {
     cout << "Hello, World!";
 }

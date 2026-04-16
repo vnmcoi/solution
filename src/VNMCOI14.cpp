@@ -3,14 +3,8 @@ using namespace std;
 
 int N, A, B;
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("NANGLUONG.INP", "r", stdin);
-    freopen("NANGLUONG.OUT", "w", stdout);
-
     cin >> N >> A >> B;
     if (A * N % (A + B) != 0)
     {
@@ -21,5 +15,16 @@ int main()
         int y = A * N / (A + B);
         cout << y;
     }
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("NANGLUONG.INP", "r", stdin);
+    freopen("NANGLUONG.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

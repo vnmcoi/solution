@@ -12,13 +12,8 @@ bool check(long long x)
     return N * M - (N - 2 * x) * (M - 2 * x) <= T;
 }
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("LATGACH.INP", "r", stdin);
-    freopen("LATGACH.OUT", "w", stdout);
     cin >> N >> M >> T;
     long long l = 0;
     long long r = min(N, M) / 2 + 1;
@@ -35,5 +30,16 @@ int main()
         }
     }
     cout << l;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("LATGACH.INP", "r", stdin);
+    freopen("LATGACH.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

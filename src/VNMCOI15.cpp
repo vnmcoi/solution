@@ -6,13 +6,8 @@ const int mxN = 2e5 + 5;
 int N;
 int A[mxN];
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("BOIBA.INP", "r", stdin);
-    freopen("BOIBA.OUT", "w", stdout);
     cin >> N;
     for (int i = 1; i <= N; ++i)
     {
@@ -38,5 +33,16 @@ int main()
         }
     }
     cout << ans;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("BOIBA.INP", "r", stdin);
+    freopen("BOIBA.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

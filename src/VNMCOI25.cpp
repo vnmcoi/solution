@@ -1,12 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
-    ios::sync_with_stdio(0);
-    cin.tie(0);
+int A, B, C;
 
-    int A, B, C;
+void solve()
+{
     cin >> A >> B >> C;
     if (A < B + C && B < A + C && C < A + B)
     {
@@ -16,5 +14,13 @@ int main()
     {
         cout << "NO";
     }
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    solve();
     return 0;
 }

@@ -3,11 +3,8 @@ using namespace std;
 
 int A, B, C, D;
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
     cin >> A >> B >> C >> D;
     if (A == C || A == D || B == C || B == D)
     {
@@ -17,5 +14,13 @@ int main()
     {
         cout << "NO";
     }
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    solve();
     return 0;
 }

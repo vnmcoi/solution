@@ -25,7 +25,7 @@ struct FenwickTree
         }
     }
 
-    int querry(int x)
+    int get(int x)
     {
         int res = 0;
         for (; x >= 1; x -= x & -x)
@@ -37,18 +37,12 @@ struct FenwickTree
 
     int sum(int l, int r)
     {
-        return querry(r) - querry(l - 1);
+        return get(r) - get(l - 1);
     }
 };
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("SAPXEP.INP", "r", stdin);
-    freopen("SAPXEP.OUT", "w", stdout);
-
     cin >> N;
     for (int i = 1; i <= N; ++i)
     {
@@ -79,5 +73,16 @@ int main()
             --R;
         }
     }
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("SAPXEP.INP", "r", stdin);
+    freopen("SAPXEP.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

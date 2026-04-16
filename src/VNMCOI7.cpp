@@ -4,27 +4,21 @@ using namespace std;
 const int mxN = 500 + 5;
 
 int R, C, M;
-string S;
-bitset<mxN> wall[mxN];
 bitset<mxN> mask[mxN];
+bitset<mxN> wall[mxN];
 bitset<mxN> temp[mxN];
+string S;
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("TREASURE.INP", "r", stdin);
-    freopen("TREASURE.OUT", "w", stdout);
-
     cin >> R >> C >> M;
     for (int i = 1; i <= R; ++i)
     {
-        string T;
-        cin >> T;
-        for (int j = 0; j < C; ++j)
+        for (int j = 1; j <= C; ++j)
         {
-            if (T[j] == '.')
+            char c;
+            cin >> c;
+            if (c == '.')
             {
                 wall[i][j] = 1;
                 mask[i][j] = 1;
@@ -32,38 +26,38 @@ int main()
         }
     }
     cin >> S;
-    for (char c : S)
+    for (int m = 0; m < M; ++m)
     {
         for (int i = 1; i <= R; ++i)
         {
             temp[i].reset();
         }
-        if (c == 'D' || c == '?')
+        if (S[m] == 'D' || S[m] == '?')
         {
             for (int i = 1; i <= R; ++i)
             {
                 temp[i] |= (mask[i] << 1);
             }
         }
-        if (c == 'T' || c == '?')
+        if (S[m] == 'T' || S[m] == '?')
         {
             for (int i = 1; i <= R; ++i)
             {
                 temp[i] |= (mask[i] >> 1);
             }
         }
-        if (c == 'B' || c == '?')
+        if (S[m] == 'N' || S[m] == '?')
         {
-            for (int i = 1; i < R; ++i)
-            {
-                temp[i] |= mask[i + 1];
-            }
-        }
-        if (c == 'N' || c == '?')
-        {
-            for (int i = 2; i <= R; ++i)
+            for (int i = 1; i <= R; ++i)
             {
                 temp[i] |= mask[i - 1];
+            }
+        }
+        if (S[m] == 'B' || S[m] == '?')
+        {
+            for (int i = 1; i <= R; ++i)
+            {
+                temp[i] |= mask[i + 1];
             }
         }
         for (int i = 1; i <= R; ++i)
@@ -77,5 +71,16 @@ int main()
         ans += mask[i].count();
     }
     cout << ans;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("TREASURE.INP", "r", stdin);
+    freopen("TREASURE.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

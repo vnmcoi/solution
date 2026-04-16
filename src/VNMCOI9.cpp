@@ -6,14 +6,8 @@ const int mxN = 5 + 5;
 int N;
 int cnt[mxN];
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("CHONCAM.INP", "r", stdin);
-    freopen("CHONCAM.OUT", "w", stdout);
-
     cin >> N;
     int ans = 0, cur = 6;
     for (int i = 1; i <= N; ++i)
@@ -53,5 +47,16 @@ int main()
         }
     }
     cout << ans << ' ' << cur;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("CHONCAM.INP", "r", stdin);
+    freopen("CHONCAM.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

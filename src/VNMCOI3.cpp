@@ -7,14 +7,8 @@ int N, M;
 int A[mxN][mxN];
 int f[mxN][mxN][3];
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
-    freopen("MATRIX3.INP", "r", stdin);
-    freopen("MATRIX3.OUT", "w", stdout);
-
     cin >> N >> M;
     for (int i = 1; i <= N; ++i)
     {
@@ -50,5 +44,16 @@ int main()
         }
     }
     cout << max(f[N][M][0], max(f[N][M][1], f[N][M][2]));
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    freopen("MATRIX3.INP", "r", stdin);
+    freopen("MATRIX3.OUT", "w", stdout);
+
+    solve();
     return 0;
 }

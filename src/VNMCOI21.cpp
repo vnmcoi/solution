@@ -3,13 +3,9 @@ using namespace std;
 
 int A, B;
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
     cin >> A >> B;
-
     if (A == 0)
     {
         if (B == 0)
@@ -29,5 +25,13 @@ int main()
     {
         cout << -B / A;
     }
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    solve();
     return 0;
 }

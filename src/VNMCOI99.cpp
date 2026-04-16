@@ -1,68 +1,31 @@
-#include <iostream>
-#include <cstdio>
-
+#include <bits/stdc++.h>
 using namespace std;
+
+long long N;
 
 void solve()
 {
-    long long K;
-    cin >> K;
-
-    if (K == 1)
+    cin >> N;
+    long long ans = 0;
+    for (int i = 1; 1LL * i * i <= N; ++i)
     {
-        cout << 1 << " " << 1 << "\n";
-        return;
-    }
-
-    if (K % 3 == 0)
-    {
-        cout << -1 << "\n";
-        return;
-    }
-
-    long long m = 1;
-    for (; m <= 8; ++m)
-    {
-        if ((m * (K % 9)) % 9 == 8)
+        if (N % i == 0)
         {
-            break;
+            ans += i;
+            if (N / i != i)
+            {
+                ans += N / i;
+            }
         }
     }
-
-    long long first_digit;
-    if (K <= 8)
-    {
-        first_digit = K - 1;
-    }
-    else
-    {
-        first_digit = K % 9;
-    }
-
-    long long sum_of_digits = (m + 1) * K;
-
-    cout << first_digit << " " << sum_of_digits << "\n";
+    cout << ans;
 }
 
 int main()
 {
-    if (fopen("SODEP.INP", "r"))
-    {
-        freopen("SODEP.INP", "r", stdin);
-        freopen("SODEP.OUT", "w", stdout);
-    }
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    int Q;
-    if (cin >> Q)
-    {
-        while (Q--)
-        {
-            solve();
-        }
-    }
-
+    solve();
     return 0;
 }

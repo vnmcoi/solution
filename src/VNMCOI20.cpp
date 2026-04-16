@@ -3,11 +3,8 @@ using namespace std;
 
 double A;
 
-int main()
+void solve()
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-
     cin >> A;
     if (A >= 9.0)
     {
@@ -21,5 +18,13 @@ int main()
     {
         cout << "SAFE";
     }
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    solve();
     return 0;
 }
